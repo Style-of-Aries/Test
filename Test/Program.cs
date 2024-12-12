@@ -108,12 +108,14 @@ namespace Test
                 sv.output();
             }
         }
+        
         static void Main(string[] args)
         {
             nhapSach();
             xuatSach();
             xoaSach();
             xuatSach();
+            nhapSV();
             Console.ReadKey();
 
         }
