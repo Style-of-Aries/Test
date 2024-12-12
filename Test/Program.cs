@@ -7,44 +7,11 @@ using System.Web;
 
 namespace Test
 {
-    enum gioiTinh
-    {
-        Nam,
-        Nu
-    }
-    class Sach
-    {
-        #region Thuoc tinh
-        string maSach, tenSach, tenTacGia;
-        int soTrang, gia;
-        #endregion
-        #region Phuong thuc
-        public string getMaSach()
-        {
-            return maSach;
-        }
-        public void input()
-        {
-            Console.Write("Ma sach: ");
-            maSach = Console.ReadLine();
-            Console.Write("Ten sach: ");
-            tenSach = Console.ReadLine();
-            Console.Write("Ten tac gia: ");
-            tenTacGia = Console.ReadLine();
-            Console.Write("So trang: ");
-            soTrang = Int32.Parse(Console.ReadLine());
-            Console.Write("Gia: ");
-            gia = Int32.Parse(Console.ReadLine());
-        }
-        public void output()
-        {
-            Console.WriteLine("Ma sach: {0}; Ten sach: {1}; Ten tac gia: {2}; So trang: {3}; Gia sach(VND): {4}", maSach, tenSach, tenTacGia, soTrang, gia);
-        }
-        #endregion
-    }
+
     internal class Program
     {
         static List<Sach> list_s = new List<Sach>();
+        static List<SInhVien> list_sv = new List<SInhVien>();
         static void nhapSach()
         {
             Console.Write("Nhap so luong sach: ");
@@ -52,7 +19,7 @@ namespace Test
             for(int i = 0;i<n;i++)
             {
                 Sach s = new Sach();
-                Console.WriteLine($"Nhap thong tin cua sach {i}");
+                Console.WriteLine($"Nhap thong tin cua sach {i+1}");
                 s.input();
                 list_s.Add(s);
             }
@@ -111,15 +78,35 @@ namespace Test
             string xoa = Console.ReadLine();
             for(int i=0;i<list_s.Count;i++)
             {
-                if (list_s.g.getMaSach().SequenceEqual(xoa))
+                if (list_s[i].getMaSach().Equals(xoa)) 
                 {
                     
-                    list_s.Remove(sach);
+                    list_s.RemoveAt(i);
                     dem++;
                     Console.WriteLine("Da xoa!");
                 }
             }
             if (dem == 0) Console.WriteLine("Ma sach khong hop le!");
+        }
+        static void nhapSV()
+        {
+            Console.Write("Nhap so luong sinh vien: ");
+            int n = Int32.Parse(Console.ReadLine());
+            for(int i = 0; i<n; i++)
+            {
+                Console.WriteLine($"Nhap thong tin sinh vien thu {i+1}");
+                SInhVien sv = new SInhVien();
+                sv.input();
+                list_sv.Add(sv);
+            }
+        }
+        static void xuatSV()
+        {
+            foreach(SInhVien sv in list_sv)
+            {
+                Console.WriteLine("Danh sach Sinh Vien: ");
+                sv.output();
+            }
         }
         static void Main(string[] args)
         {
