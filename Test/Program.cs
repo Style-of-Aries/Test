@@ -116,6 +116,7 @@ namespace Test
             xoaSach();
             xuatSach();
             nhapSV();
+            xuatSV();
             Console.ReadKey();
 
         }
